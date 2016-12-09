@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Order Form</title>
+		<link rel="stylesheet" type="text/css" href=""/>
+		<script src="" type="text/javascript" charset="utf-8"></script>
+		<script src="" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<form action="/submit" method="post" name="order ">
+			<h1>Order Form</h1>
+			<fieldset>
+				<legend>Contact Details</legend>
+				<ul>
+					<li>
+						<label class="required">
+							<div>Full Name</div>
+							<input name="name" required autofocus />
+						</label>
+					</li>
+					<li>
+						<label class="required">
+							<div>Email Address</div>
+							<input name="email" required />
+						</label>
+					</li>
+					<li>
+						<label>
+							<div>Postal Address</div>
+							<input name="address1" placeholder="Address Line 1"/>
+						</label>
+						<div>&nbsp;</div>
+						<input name="address2" placeholder="Address Line 2"/>
+						<div>&nbsp;</div>
+						<input name="city" class="city" placeholder="Town/City"/>
+						<input name="state" class="state" placeholder="State"/>
+						<input name="zip" class="zip" placeholder="Zip Code"/>
+						<div>&nbsp;</div>
+						<select name="country">
+							<option value="0">Country</option>
+							<option value="US">United States</option>
+							<option value="CA">Canada</option>
+						</select>
+					</li>
+					<li>
+						<label>
+							<div>Home Phone No.</div>
+							<input type="tel" name="homephone"/>
+						</label>
+					</li>
+					<li>
+						<label>
+							<div>Cell Phone No.</div>
+							<input type="tel" name="cellphone"/>
+						</label>
+					</li>
+					<li>
+						<label>
+							<div>Skype Name</div>
+							<input name="skype"/>
+						</label>
+					</li>
+					<li>
+						<label>
+							<div>Twitter</div>
+							<span class="twitter_prefix">@</span>
+							<input name="twitter" class="twitter"/>
+						</label>
+					</li>
+				</ul>
+			</fieldset>
+            <div class="button">
+  				<input type="submit" value="Submit order" />           	
+  				<input type="submit" id="saveOrder" value="Save order" />           	
+            </div>			
+		</form>
+	</body>
+</html>
