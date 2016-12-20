@@ -4,11 +4,11 @@
 		<meta charset="UTF-8">
 		<title>Order Form</title>
 		<link rel="stylesheet" type="text/css" href=""/>
-		<script src="" type="text/javascript" charset="utf-8"></script>
+		<script src="js/app.js" type="text/javascript" charset="utf-8"></script>
 		<script src="" type="text/javascript" charset="utf-8"></script>
 	</head>
 	<body>
-		<form action="/submit" method="post" name="order ">
+		<form action="/submit" method="post" name="order">
 			<h1>Order Form</h1>
 			<fieldset>
 				<legend>Contact Details</legend>
@@ -70,9 +70,124 @@
 					</li>
 				</ul>
 			</fieldset>
+			
+			<fieldset>
+				<legend>Login Details</legend>
+				<ul>
+					<li>
+						<label class="required">
+							<div>Password</div>
+							<input type="password" name="password" required/>
+						</label>
+					</li>
+					<li>
+						<label class="required">
+							<div>Confirm Password</div>
+							<input type="password" name="Confirm_Password" required/>
+						</label>
+					</li>
+				</ul>
+			</fieldset>
+			
+			<fieldset>
+				<legend>Order Details</legend>
+				<table>
+					<thead>
+						<tr>
+							<th>Product</th>
+							<th>Description</th>
+							<th>Oty</th>
+							<th>Price</th>
+							<th>Total</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								COMP001
+								<input type="hidden" name="product_code" value="COMP001" />
+							</td>
+							<td>The Ulimate Smartphone</td>
+							<td>
+								<input type="number" name="quantity" value="0" data-price="399.99" min="0" max="99" maxlength="2" />
+							</td>
+							<td>$399.99</td>
+							<td>
+								<output name="item_total" class="item_total">$0.00</output>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								COMP002
+								<input type="hidden" name="product_code" value="COMP002" />
+							</td>
+							<td>The Ulimate Tablet</td>
+							<td>
+								<input type="number" name="quantity" value="0" data-price="499.99" min="0" max="99" maxlength="2" />
+							</td>
+							<td>$499.99</td>
+							<td>
+								<output name="item_total" class="item_total">$0.00</output>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								COMP003
+								<input type="hidden" name="product_code" value="COMP003" />
+							</td>
+							<td>The Ulimate Netbook</td>
+							<td>
+								<input type="number" name="quantity" value="0" data-price="299.99" min="0" max="99" maxlength="2" />
+							</td>
+							<td>$299.99</td>
+							<td>
+								<output name="item_total" class="item_total">$0.00</output>
+							</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="4">Order Total</td>
+							<td>
+								<output name="order_total" id="order_total">$0.00</output>
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</fieldset>
+            
+            <fieldset>
+            	<legend>Payment Details</legend>
+            	<ul>
+            		<li>
+            			<label class="required">
+            				<div>Name on Card</div>
+            				<input  name="Card_name" required/>
+            			</label>
+            		</li>
+            		<li>
+            			<label class="required"></label>
+            			<input name="Card_number" pattern="[0-9]{13,16}" maxlength="16" required title="13-16 digits, no spaces"/>
+            		</li>
+            		<li>
+            			<label class="required">
+            				<div>Expiry Date</div>
+            				<input type="month" name="card_expiry" maxlength="7" placeholder="YYYY-MM" required value="2015-06"/>
+            			</label>
+            		</li>
+            		<li>
+            			<label class="required">
+            				<div>CVV2 NO.</div>
+            				<input  name="card_cvv2" class="cvv" maxlength="3" pattern="[0-9]{3}" required title="exactly 3 digits"/>
+            			    <span>(Three digit code at back of card)</span>
+            			</label>
+            		</li>
+            	</ul>
+            </fieldset>
+            
             <div class="button">
   				<input type="submit" value="Submit order" />           	
-  				<input type="submit" id="saveOrder" value="Save order" />           	
+  				<input type="submit" id="saveOrder" value="Save order" formnovalidate  />           	
             </div>			
 		</form>
 	</body>
