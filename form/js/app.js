@@ -93,6 +93,11 @@
 			doCustomValidity(orderForm.confirm_password,'');
 			doCustomValidity(orderForm.card_name,'');
 			
+			//调用兼容IE9的函数
+			if (!Modernizr.Input.required || !Modernizr.input.pattern) {
+				fallbackValidation();
+			}
+			
 			if (orderForm.name.value.length < 4) {
 				doCustomValidity(
 					orderForm.name,"Full Name must be at least 4 characters long"
@@ -144,9 +149,28 @@
 				doCustomValidity(field,'');
 				
 				if (field.hasAttribute('pattern')) {
-					
+					var pattern = new RegExp(field.getAttribute('pattern').toString());
+				    if (!pattern.test(field.value)) {
+				    	var msg = 'Please match the requested format.';
+				    	if(field.hasAttribute('title') && field.getAttribute('title').length > 0){
+				    		msg += ' '+field.getAttribute('title');
+				    	}
+				    	doCustomValidity(field,msg);
+				    }
+				}
+				
+				if (field.hasAttribute('type') && field.getAttribute('type').toLowerCase() === 'email') {
+					var pattern = new RegExp(/\S+@\S+\.\S+/);
+					if (!pattern.test(field.value)) {
+						doCustomValidity(field,'Please enter an email address.');
+					}
+				}
+				
+				if (field.hasAttribute('required') && field.value.lenght < 1) {
+					doCustomValidity(field,'Please fill out this field.');
 				}
 			}
+		
 		}
 		
 	};
